@@ -9,7 +9,7 @@ cma.CMA.population_size = 256
 cma.CMA.init_sigma = 0.1
 
 cma.CMAMaster.seed = 0
-cma.CMAMaster.n_repeat = 5
+cma.CMAMaster.n_repeat = 16
 cma.CMAMaster.max_iter = 2000
 cma.CMAMaster.eval_every_n_iter = 10
 cma.CMAMaster.n_eval_roll_outs = 100
