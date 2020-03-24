@@ -34,15 +34,15 @@ For instance, changing `cma.CMA.population_size = 256` to `cma.CMA.population_si
 
 ### Training on a cluster
 
-Running the code on a distributed computing platform such as GKE can speed up the training a lot, see this [blog](https://cloud.google.com/blog/products/ai-machine-learning/how-to-run-evolution-strategies-on-google-kubernetes-engine) for more information about running evolution algorithms on GKE.  
+Running the code on a distributed computing platform such as Google Kubernetes Engine (GKE) can speed up the training a lot, see this [blog](https://cloud.google.com/blog/products/ai-machine-learning/how-to-run-evolution-strategies-on-google-kubernetes-engine) for more information about running evolution algorithms on GKE.  
 
-Once you have a Kubernetes cluster ready (either locally or from a cloud service provider), you can wrap the code into an image and submit a job to the cluster.  
+Once you have a Kubernetes cluster ready (either locally or from a cloud service provider), you can package the code into an image and submit a job to the cluster.  
 The following commands are only tested on GKE but should be general, steps 1 and 2 are *only* necessary for the first time or when you have made code modifications.
 
 #### Step 1. Prepare an image.
-You can use our prepared docker images `docker.io/braintok/self-attention-agent:{tag}`, in this case you can skip this step.  
+You can use our prepared images `docker.io/braintok/self-attention-agent:{tag}`, in this case you can skip this step.  
 
-If you decide to create your own image, you can run the following commands in the repository's root directory.
+If you decide to create your own image, you can run the following command in the repository's root directory.
 ```
 docker build -t {image-name}:{tag} .
 ```
@@ -79,7 +79,7 @@ docker image push docker.io/{your-docker-account-name}/self-attention-agent:{tag
 ```
 
 #### Step 3. Submit a job to Kubernetes.
-We assume you have configured `kubectl` to work with your cluster. If that is not the case, please consult this [doc](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for setup instructions. See also this [blog](https://cloud.google.com/blog/products/ai-machine-learning/how-to-run-evolution-strategies-on-google-kubernetes-engine) for instructions on setting up a cluster on GKE.
+We assume you have configured `kubectl` to work with your cluster. Otherwise, please consult this [doc](https://kubernetes.io/docs/tasks/tools/install-kubectl/) for setup instructions.
 
 Once your `kubectl` works correctly with your cluster, you can run the following command to deploy a job on the cluster.
 ```
