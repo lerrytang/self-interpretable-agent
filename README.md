@@ -1,5 +1,8 @@
 # Neuroevolution of Self-Interpretable Agents
 
+![attentionagent](https://storage.googleapis.com/quickdraw-models/sketchRNN/attention/assets/card/attentionagent.gif)  
+Our agent receives visual input as a stream of 96x96px RGB images (left). Each image frame is passed through a self-attention bottleneck module, responsible for selecting K=10 patches (highlighted in white, middle). Features from these K patches (such as location) are then routed to a decision-making controller (right) that will produce the agent’s next action. The parameters of the self-attention module and the controller are trained together using neuroevolution.
+
 This repository contains the code to reproduce the results presented in the orignal [paper](https://attentionagent.github.io/). 
 
 ## Dependencies
@@ -16,6 +19,28 @@ docker image pull docker.io/braintok/self-attention-agent:{tag}
 # Connect to the image, you can run the training/test commands in the container now.
 docker run -it braintok/self-attention-agent:{tag} /bin/bash
 ```
+
+## Evaluate pre-trained models
+
+We have included our pre-trained models for both CarRacing and DoomTakeCover in this repository.  
+You can run the following commands to evaluate the trained agent, change `pretrained/CarRacing` to `pretrained/TakeCover` to see results in DoomTakeCover.
+```
+# Evaluate for 100 episodes.
+python3 test_solution.py --log-dir=pretrained/CarRacing/ --n-episodes=100
+
+# Evaluate with GUI.
+python3 test_solution.py --log-dir=pretrained/CarRacing/ --render
+
+# Evaluate with GUI, also show attention patch visualization.
+python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot
+
+# Evaluate with GUI, save videos and screenshots.
+python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot --save-screens
+```
+TODO: Add code and instructions for testing in the modified environments.
+
+![carracingextensions1](https://storage.googleapis.com/quickdraw-models/sketchRNN/attention/assets/card/CarRacingExtensions1.gif)
+![carracingextension2](https://storage.googleapis.com/gcp_blog/img/CarRacingExtensions2Shortened.gif)  
 
 ## Training
 
@@ -100,24 +125,6 @@ bash deploy_task.sh --config configs/TakeCover.gin --experiment-name training-ta
 Congratulations! You have started your training task on your cluster.  
 In the task deployment, we have also started an nginx process that allows you to check the training process via HTTP requests.
 This is based the code in this [repository](https://github.com/lerrytang/es_on_gke), you can learn more about it there.
-
-## Evaluate pre-trained models
-
-We have included our pre-trained models for both CarRacing and DoomTakeCover in this repository.  
-You can run the following commands to evaluate the trained agent, change `pretrained/CarRacing` to `pretrained/TakeCover` to see results in DoomTakeCover.
-```
-# Evaluate for 100 episodes.
-python3 test_solution.py --log-dir=pretrained/CarRacing/ --n-episodes=100
-
-# Evaluate with GUI.
-python3 test_solution.py --log-dir=pretrained/CarRacing/ --render
-
-# Evaluate with GUI, also show attention patch visualization.
-python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot
-
-# Evaluate with GUI, save videos and screenshots.
-python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot --save-screens
-```
 
 ## Citation
 For attribution in academic contexts, please cite this work as
