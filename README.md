@@ -1,3 +1,5 @@
+**Notice** This is a mirror repo of [brain-tokyo-workshop](https://github.com/google/brain-tokyo-workshop), please post issues and send pull requests there.
+
 # Neuroevolution of Self-Interpretable Agents
 
 ![attentionagent](https://storage.googleapis.com/quickdraw-models/sketchRNN/attention/assets/card/attentionagent.gif)  
@@ -5,7 +7,6 @@ Our agent receives visual input as a stream of 96x96px RGB images (left). Each i
 
 This repository contains the code to reproduce the results presented in the orignal [paper](https://attentionagent.github.io/). 
 
-**Notice** I do not maintain this, please post issues and send pull requests to this [repository](https://github.com/google/brain-tokyo-workshop).
 
 ## Dependencies
 
