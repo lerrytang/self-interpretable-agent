@@ -5,6 +5,8 @@ Our agent receives visual input as a stream of 96x96px RGB images (left). Each i
 
 This repository contains the code to reproduce the results presented in the orignal [paper](https://attentionagent.github.io/). 
 
+**Notice** I do not maintain this, please post issues and send pull requests to this [repository](https://github.com/google/brain-tokyo-workshop).
+
 ## Dependencies
 
 * CarRacing: run the command `pip3 install -r requirements.txt` and install all the required packages.
@@ -37,10 +39,6 @@ python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot
 # Evaluate with GUI, save videos and screenshots.
 python3 test_solution.py --log-dir=pretrained/CarRacing/ --render --overplot --save-screens
 ```
-TODO: Add code and instructions for testing in the modified environments.
-
-![carracingextensions1](https://storage.googleapis.com/quickdraw-models/sketchRNN/attention/assets/card/CarRacingExtensions1.gif)
-![carracingextension2](https://storage.googleapis.com/gcp_blog/img/CarRacingExtensions2Shortened.gif)  
 
 ## Training
 
